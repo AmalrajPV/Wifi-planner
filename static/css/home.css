@@ -1,0 +1,163 @@
+body{
+    background-color: var(--primary-color);    
+}
+
+.wp-header{
+    height: 70px;
+    background-color: var(--dark);
+    display: flex;
+    align-items: center;
+}
+
+.wp-icon-box{
+    height: 70px;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 70px auto;
+}
+
+.wp-icon-box>.icon-title{
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 24px;
+    padding: auto;
+    margin: auto;
+}
+
+.wp-icon-box>img{
+    width: 100%;
+    height: 100%;
+}
+
+.wp-container{
+    display: grid;
+    grid-template-columns: 75% 25%;
+}
+
+.container-left, .container-right{
+    height: calc(100vh - 70px);
+    padding: 1rem;
+    width: 100%;
+}
+
+.container-left{
+    background-color: none;
+}
+
+.container-right{
+    background-color: var(--secondary-color);
+    border-left: 1px solid #ffffff;
+    overflow: scroll;
+}
+
+.wp-btn{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.tool-btn{
+    display: block;
+    background-color: transparent;
+    color: #ffffff;
+    padding: .5rem;
+    border: 1px solid #ffffff;
+    border-radius: .5rem;
+    width: 3rem;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    transition: .4s all ease-in-out;
+}
+
+.tool-btn:hover{
+    background-color: #ffffff;
+    color: var(--secondary-color);
+}
+
+.nav-btn{
+    background-color: var(--secondary-color);
+    color: #ffffff;
+    padding: .5rem 1rem;
+    border-radius: .25rem;
+    border: 1px solid #ffffff;
+    transition: .4s all ease-in-out;
+    margin: 0 2rem;
+    font-size: 14px;
+}
+
+.nav-btn:hover{
+    background-color: #ffffff;
+    color: var(--secondary-color);
+}
+
+.wp-header-btn-box{
+    flex-grow: 1;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: end;
+}
+
+.wp-right-title{
+    color: #ffffff;
+    text-align: center;
+    font-size: 13px;
+    text-transform: uppercase;
+    margin-top: 1rem;
+}
+
+.wp-tool-items{
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+}
+
+.wp-tool-items>input[type="radio"]:checked + label{
+    background-color: #ffffff;
+    color: var(--secondary-color);   
+}
+
+.wp-right-items{
+    padding: 1rem;
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+.right-btn{
+    padding: .5rem 0;
+    background-color: #bcbcbc;
+    color: var(--primary-color);
+    text-align: center;
+    border: 1px solid var(--primary-color);
+    border-radius: .25rem;
+}
+
+.right-btn:hover{
+    background-color: #ffffff;
+}
+
+.wp-right-items>input[type="radio"]:checked + label{
+    background-color: #ffffff;
+}
+
+.canvas-box{
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#canvas{
+    /* width: 100%; */
+    /* height: 100%; */
+    transform-origin: top left; 
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+    transition: .3s transform ease-in-out;
+    transform: scale(1) translateX(0%) translateY(0%);
+    cursor: pointer;
+    height: 500px;
+}

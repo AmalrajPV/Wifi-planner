@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block style%}
+<link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}" />
+{% endblock %}
+
+{% block body %}
+    <header class="wp-header">
+        <div class="wp-icon-box">
+            <img src="{{url_for('static', filename='assets/icon.svg')}}" alt="" class="wp-icon">
+            <div class="icon-title">Wifi Planner</div>
+        </div>
+        <nav class="wp-header-btn-box">
+            <a href="/" class="wp-btn nav-btn"><i class="fas fa-file-import"></i> Import Plan</a>
+            <a href="" class="wp-btn nav-btn"><i class="fas fa-save"></i> Save Plan</a>
+            <a class="wp-btn nav-btn" id="export"><i class="fas fa-cloud-download-alt"></i> Export Plan</a>
+            <form action="/playground" method="post" id="svg-form" hidden>
+                <input type="text" name="svg" id="svg-data" hidden>
+                <input type="number" name="width" id="width">
+                <input type="number" hidden id="height" name="height">
+            </form>
+        </nav>
+    </header>
+    <main class="wp-container">
+        <div class="container-left">
+            <div class="canvas-box" id="canvas-box">
+                <svg id="canvas" style="background: url({{data}});">
+                    <defs>
+                      <pattern
+                        id="smallGrid"
+                        width="10"
+                        height="10"
+                        patternUnits="userSpaceOnUse"
+                      >
+                        <path
+                          d="M 10 0 L 0 0 0 10"
+                          fill="none"
+                          stroke="red"
+                          stroke-width="0.25"
+                        />
+                      </pattern>
+                      <pattern
+                        id="grid"
+                        width="100"
+                        height="100"
+                        patternUnits="userSpaceOnUse"
+                      >
+                        <rect width="100" height="100" fill="url(#smallGrid)" />
+                        <path
+                          d="M 100 0 L 0 0 0 100"
+                          fill="none"
+                          stroke="green"
+                          stroke-width="1"
+                        />
+                      </pattern>
+                    </defs>
+                     <rect width="100%" height="100%" fill="url(#grid)" />
+                    <svg id ="transparancy-layer">
+                      <rect width="100%" height="100%" fill="white" />
+                    </svg>
+                </svg>
+            </div>
+        </div>
+
+        <div class="container-right">
+            <div class="tool-box">
+                <!-- tools  -->
+                <div class="wp-right-title">
+                    Tools
+                </div>
+                <div class="wp-tool-items">
+                    <input type="radio" name="draw-state" id="select" checked hidden >
+                    <label for="select" class="wp-btn tool-btn">
+                        &#128400;
+                    </label>
+
+                    <input type="radio" name="draw-state" id="draw" hidden>
+                    <label for="draw" class="wp-btn tool-btn">
+                        &#128397;
+                    </label>
+
+                    <button class="wp-btn tool-btn" id="undo">
+                        &#10226;
+                    </button>
+                </div>
+                <!-- materials -->
+                <div class="wp-right-title">
+                    Materials
+                </div>
+                <div class="wp-right-items">
+                    <input type="radio" name="material" id="concrete" hidden checked>
+                    <label class="btn right-btn" for="concrete">concrete</label>
+
+                    <input type="radio" name="material" id="wood" hidden >
+                    <label class="btn right-btn" for="wood">wood</label>
+
+                    <input type="radio" name="material" id="metal" hidden >
+                    <label class="btn right-btn" for="metal">metal</label>
+
+                    <input type="radio" name="material" id="glass" hidden >
+                    <label class="btn right-btn" for="glass">glass</label>
+                </div>
+                <!-- zoom -->
+                <div class="wp-right-title">
+                    Zoom
+                </div>
+                <div class="wp-right-items">
+                    <button class="btn right-btn" id="zplus-btn">+</button>
+                    <button class="btn right-btn" id="zmin-btn">-</button>
+                </div>
+                <!-- transparancy -->
+                <div class="wp-right-title">
+                    transparancy
+                </div>
+                <div class="wp-right-items">
+                    <input type="range" class="range" min="0" max="1" step="0.05" value="0.5" id="transparancy-range">
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="{{url_for('static', filename='js/planner.js')}}"></script>
+    <script src="{{url_for('static', filename='js/zoom-canvas.js')}}"></script>
+    <script src="{{url_for('static', filename='js/draw.js')}}"></script>
+    <script src="{{url_for('static', filename='js/send-info.js')}}"></script>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block style%}
+<link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}" />
+<link rel="stylesheet" href="{{url_for('static', filename='css/testing.css')}}" />
+{% endblock %}
+
+{% block body %}
+    <header class="wp-header">
+        <div class="wp-icon-box">
+            <img src="{{url_for('static', filename='assets/icon.svg')}}" alt="" class="wp-icon">
+            <div class="icon-title">Wifi Planner</div>
+        </div>
+        <nav class="wp-header-btn-box">
+            
+        </nav>
+    </header>
+    <main class="wp-container">
+        <div class="container-left">
+            <div class="canvas-box">
+            <canvas id="output-canvas"></canvas> 
+            </div>
+        </div>
+
+        <div class="container-right">
+            
+        </div>
+    </main>
+    <script>
+        var data = '{{data | tojson}}';
+    </script>
+    <script src="{{url_for('static', filename='js/testing.js')}}"></script>
+{% endblock %}

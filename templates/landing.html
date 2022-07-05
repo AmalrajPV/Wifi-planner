@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block style%}
+<link rel="stylesheet" href="{{url_for('static', filename='css/landing-styles.css')}}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='node_modules/cropperjs/dist/cropper.css')}}">
+{% endblock %}
+
+{% block body %}
+
+<header>
+    <a href="/" class="logo-link">
+        <img src="{{url_for('static', filename='assets/icon.svg')}}" alt="logo">
+    </a>
+</header>
+
+<main>
+
+<section class="main-container" id="container1">
+
+    <div class="content-area">
+        <div class="content-title">
+            Wifi Planner
+        </div>
+        <div class="content-body">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda maiores laudantium, quaerat impedit deleniti iure rerum minima aliquid sint et dolore vero accusantium rem nisi ea harum magni tempore perspiciatis.
+        </div>
+        <div class="content-btns">
+            <a class="btn btn-doi" id="doi-btn">
+                DRAW ON IMAGE
+            </a>
+            <a href="/home" class="btn btn-dob">
+                DRAW ON BLANK
+            </a>
+        </div>
+    </div>
+
+    <div class="image-area">
+        <img src="{{url_for('static', filename='assets/plan.png')}}" alt="image">
+    </div>
+
+</section>
+
+<section class="crop-container upload hide-container" id="container2">
+
+    <a class="close" id="close-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+            <path d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z" fill="#fff"/>
+        </svg>
+    </a>
+
+    <div class="upload-box">
+        <div class="img-box hide-container" id="image-box">
+            <img alt="" id="image">
+        </div>
+        <div class="btn-box">
+
+        <label for="pic-upload" class="btn btn-dob">
+            upload
+        </label>
+
+        <input type="file" name="upload" id="pic-upload" accept="image/*" hidden>
+
+        <a class="btn btn-doi hide-container" id="crop-btn">
+            crop
+        </a>
+
+        </div>
+    </div>
+    <form action="/home" method="post" id="imgForm" hidden><input type="text" name="planImage" id="planImage"></form>
+
+</section>
+    
+</main>
+
+<script src="{{ url_for('static', filename='node_modules/cropperjs/dist/cropper.js')}}"></script>
+<script src="{{url_for('static', filename='js/landing.js')}}"></script>
+
+{% endblock %}
+
